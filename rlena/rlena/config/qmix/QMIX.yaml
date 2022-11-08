@@ -1,0 +1,56 @@
+env_kwargs:
+  board_size: 11
+  num_rigid: 32
+  num_wood: 32
+  num_items: 20
+  max_steps: 800
+
+agent_config:
+  model_config:
+    input_shape: !!python/tuple [18,11,11]
+    # in_channel, out_channel, kernel, stride, padding
+    conv_filters: [[18,64,3,1,1], [64,64,3,1,1], [64,64,3,1,1], [64,64,3,1,1], [64,2,1,1,0]] 
+    lstm_cell_size: 128
+    fc_hidden: [128]
+    dropout: 0.0
+  epsilon: 1.0
+  epsilon_decay: 0.9999976974
+  min_epsilon: 0.1
+  learning_rate: 0.0003
+
+  save_agent_path: save/QMIX/agent.pth
+  device: cpu
+
+QMIX_config:
+  model_config:
+    input_shape: !!python/tuple [42,11,11]
+    conv_filters: [[42,64,3,2,0], [64,64,3,2,0], [64,64,2,1,1]] 
+    fc_hidden: 32
+  
+  memory_config:
+    capacity: 2000000
+    per_alpha: 0.7
+    per_beta: 0.3
+    per_beta_inc: 0.0005
+    per_epsilon: 0.01
+    n_step: 16
+
+  soft_target_rate: 0.1
+  learning_rate: 0.0003
+  batchsize: 256
+  gamma: 0.9999
+
+  save_critic_path: save/QMIX/critic.pth
+  device: cpu
+  
+train_config:
+  gpu: 0
+  tensorboard_frequency: 10
+  tensorboard_name: QMIX
+  max_step: 50000000
+  learn_threshold: 200
+  target_frequency: 800
+  learn_frequency: 256
+  enemy: simple
+
+

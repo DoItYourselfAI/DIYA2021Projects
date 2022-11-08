@@ -1,0 +1,56 @@
+env_kwargs:
+  board_size: 11
+  num_rigid: 0
+  num_wood: 20
+  num_items: 10
+  max_steps: 500
+
+agent_config:
+  model_config:
+    input_shape: !!python/tuple [18,11,11]
+    # in_channel, out_channel, kernel, stride, padding
+    conv_filters: [[18,64,3,1,1], [64,64,3,1,1], [64,64,3,1,1], [64,64,3,1,1], [64,2,1,1,0]] 
+    lstm_cell_size: 256
+    fc_hidden: [512]
+    dropout: 0.0
+  epsilon: 1.0
+  epsilon_decay: 0.99999
+  min_epsilon: 0.2
+  learning_rate: 0.0003
+
+  save_agent_path: save/QMIX/agent_with_stoped.pth
+  device: cpu
+
+QMIX_config:
+  model_config:
+    input_shape: !!python/tuple [42,11,11]
+    conv_filters: [[42,64,3,2,0], [64,64,3,2,0], [64,128,2,1,1]] 
+    fc_hidden: 128
+  
+  memory_config:
+    capacity: 1000000
+    per_alpha: 0.7
+    per_beta: 0.3
+    per_beta_inc: 0.0005
+    per_epsilon: 0.01
+    n_step: 16
+
+  soft_target_rate: 0.2
+  learning_rate: 0.0003
+  batchsize: 512
+  gamma: 0.9999
+
+  save_critic_path: save/QMIX/critic_with_stoped.pth
+  device: cpu
+  
+train_config:
+  gpu: 0
+  tensorboard_frequency: 10
+  tensorboard_name: QMIX_WITH_STOPED
+  max_step: 50000000
+  learn_threshold: 200000
+  target_frequency: 800
+  learn_frequency: 32
+  enemy: stoped
+
+

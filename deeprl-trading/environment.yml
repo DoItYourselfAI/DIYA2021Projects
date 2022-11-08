@@ -1,0 +1,26 @@
+name: deeprl-trading
+channels:
+  - defaults
+  - pytorch
+  - conda-forge
+dependencies:
+  - pandas
+  - numpy
+  - seaborn
+  - python=3.8.5
+  - matplotlib
+  - torchvision
+  - cudatoolkit=11.3
+  - pytorch::pytorch
+  - torchaudio
+  - termcolor
+  - quantstats
+  - tensorboard
+  - pip
+  - pip:
+    - cvxpy==1.1.18
+    - ecos==2.0.10
+    - osqp==0.6.2.post5
+    - pyportfolioopt==1.5.1
+    - qdldl==0.1.5.post0
+    - scs==3.0.1

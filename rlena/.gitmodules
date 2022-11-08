@@ -1,0 +1,9 @@
+[submodule "envs/playground"]
+	path = envs/playground
+	url = https://github.com/MultiAgentLearning/playground.git
+[submodule "envs/marlenv"]
+	path = envs/marlenv
+	url = https://github.com/kc-ml2/marlenv.git
+[submodule "misc/rl2"]
+	path = rlena/misc/rl2
+	url = git@gitlab.diyaml.com:moong1234/rl2.git
